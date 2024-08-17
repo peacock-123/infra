@@ -10,7 +10,7 @@ image:
   repository: ghcr.io/peacock-123/peacock-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 4cb1b2d779
+  tag: ba6e037b2d
 
 imagePullSecrets: []
 nameOverride: ""
@@ -43,7 +43,7 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  port: 50051
+  port: 8080
 
 ingress:
   enabled: true
@@ -52,13 +52,13 @@ ingress:
     - host: ""
       http:
         paths:
-          - path: /
+          - path: /api
             pathType: Prefix
             backend:
               service:
                 name: peacock-api
                 port:
-                  number: 50051
+                  number: 8080
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -89,9 +89,9 @@ readinessProbe:
   failureThreshold: 3
 
 autoscaling:
-  enabled: false
+  enabled: true 
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 10
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
