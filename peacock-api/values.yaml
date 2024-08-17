@@ -49,7 +49,7 @@ ingress:
   enabled: true
   className: nginx
   rules:
-    - host: ""
+    - host: peacock.vm.cd80.run 
       http:
         paths:
           - path: /api
