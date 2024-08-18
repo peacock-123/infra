@@ -50,7 +50,7 @@ spec:
           {{- with .Values.volumeMounts }}
           envFrom:
             - secretRef:
-                name: {{ .Values.deployment.app.secretRefName }}
+                name: peacock-app-secret
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}

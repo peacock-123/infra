@@ -113,7 +113,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-deployment:
-  app:
-    secretRefName: peacock-app-secret
