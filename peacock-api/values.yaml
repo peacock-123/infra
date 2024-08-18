@@ -56,7 +56,7 @@ ingress:
             pathType: Prefix
             backend:
               service:
-                name: peacock-api
+                name: peacock-peacock-api
                 port:
                   number: 8080
 
