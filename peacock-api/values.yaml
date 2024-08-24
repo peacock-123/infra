@@ -91,7 +91,7 @@ autoscaling:
 volumes:
   - name: promtail-config
     configMap:
-      name: promtail-config
+      name: peacock-api-promtail-config
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
