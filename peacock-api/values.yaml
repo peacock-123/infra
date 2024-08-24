@@ -2,6 +2,11 @@ replicaCount: 1
 
 revisionHistoryLimit: 1
 
+namespace: peacock
+
+environments:
+  appEnvName: peacock-app-secret
+
 image:
   repository: ghcr.io/peacock-123/peacock-server
   pullPolicy: IfNotPresent

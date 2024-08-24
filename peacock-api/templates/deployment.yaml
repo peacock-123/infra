@@ -41,6 +41,12 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            - name: namespace
+              value: {{ .Values.namespace }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.environments.appEnvName }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
