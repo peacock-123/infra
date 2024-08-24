@@ -44,9 +44,6 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
-          envFrom:
-            - secretRef:
-                name: peacock-app-secret
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
@@ -54,13 +51,6 @@ spec:
           image: "{{ .Values.promtail.image.repository }}:{{ .Values.promtail.image.tag }}"
           args:
             - -config.file=/etc/promtail/promtail.yaml
-          volumeMounts:
-            - name: promtail-config
-              mountPath: /etc/promtail
-          volumes:
-            - name: promtail-config
-              configMap:
-                name: {{ include "peacock-api.fullname" . }}-promtail-config
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}

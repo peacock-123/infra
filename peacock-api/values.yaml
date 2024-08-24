@@ -88,17 +88,15 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
-volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+volumes:
+  - name: promtail-config
+    configMap:
+      name: {{ include "peacock-api.fullname" . }}-promtail-config
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+volumeMounts:
+  - name: promtail-config
+    mountPath: /etc/promtail
 
 nodeSelector: {}
 
