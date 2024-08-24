@@ -92,3 +92,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+envFrom:
+  - secretRef:
+    name: peacock-app-secret
