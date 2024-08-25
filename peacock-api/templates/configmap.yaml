@@ -20,4 +20,4 @@ data:
           - localhost
         labels:
           job: spring-boot-logs
-          __path__: /var/log/containers/*{{ include "peacock-api.fullname" . }}*.log
+          __path__: /var/log/server.log
