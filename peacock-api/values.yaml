@@ -10,7 +10,7 @@ environments:
 image:
   repository: ghcr.io/peacock-123/peacock-server
   pullPolicy: IfNotPresent
-  tag: 4ca5d45cdb
+  tag: fb4ced1a70
 
 promtail:
   image:
