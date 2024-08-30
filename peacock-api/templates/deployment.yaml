@@ -47,12 +47,6 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Values.environments.appEnvName }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-        - name: promtail
-          image: "{{ .Values.promtail.image.repository }}:{{ .Values.promtail.image.tag }}"
-          args:
-            - -config.file=/etc/promtail/promtail.yaml
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}

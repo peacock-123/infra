@@ -12,14 +12,6 @@ image:
   pullPolicy: IfNotPresent
   tag: b9c6928e40
 
-promtail:
-  image:
-    repository: grafana/promtail
-    tag: 3.0.0
-
-loki:
-  url: http://loki-grafana-loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -88,14 +80,9 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-volumes:
-  - name: promtail-config
-    configMap:
-      name: peacock-peacock-api-promtail-config
+volumes: []
 
-volumeMounts:
-  - name: promtail-config
-    mountPath: /etc/promtail
+volumeMounts: []
 
 nodeSelector: {}
 
