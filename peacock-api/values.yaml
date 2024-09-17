@@ -47,9 +47,13 @@ service:
 
 ingress:
   enabled: true
+  className: traefik
   annotations:
     kubernetes.io/ingress.class: traefik
-  routes:
+    traefik.ingress.kubernetes.io/router.middlewares: default-strip-prefix@kubernetescrd
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  rules:
     - host: api.peacock.vm.cd80.run
       http:
         paths:
@@ -60,6 +64,16 @@ ingress:
                 name: peacock-peacock-api
                 port:
                   number: 8080
+  middlewares:
+    - name: block-actuator-prometheus
+      middleware:
+        type: middlewareType
+        headers:
+          customRequestHeaders:
+            X-Forwarded-Uri: /
+        stripPrefix:
+          prefixes:
+            - /actuator/prometheus
 
 resources:
    limits:
