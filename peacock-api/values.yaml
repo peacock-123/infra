@@ -10,7 +10,7 @@ environments:
 image:
   repository: ghcr.io/peacock-123/peacock-server
   pullPolicy: IfNotPresent
-  tag: b43b1a7bd0
+  tag: 7b46858eba
 
 imagePullSecrets: []
 nameOverride: ""
